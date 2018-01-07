@@ -3,6 +3,7 @@
 // npm install --save bcrypt-nodejs
 // npm install --save jwt-simple
 // npm install --save passport passport-jwt
+// npm install --save passport-local
 
 // node index.js to start
 
