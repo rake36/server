@@ -2,6 +2,7 @@
 // npm install --save express mongoose morgan body-parser
 // npm install --save bcrypt-nodejs
 // npm install --save jwt-simple
+// npm install --save passport passport-jwt
 
 // node index.js to start
 
