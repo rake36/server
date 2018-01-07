@@ -1,5 +1,7 @@
 // main starting point of app
 // npm install --save express mongoose morgan body-parser
+// npm install --save bcrypt-nodejs
+// npm install --save jwt-simple
 
 // node index.js to start
 

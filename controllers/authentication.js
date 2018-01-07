@@ -1,4 +1,13 @@
+const jwt = require('jwt-simple');
 const User = require('../models/user');
+const config = require('../config');
+
+function tokenForUser(user) {
+    const timestamp = new Date().getTime();
+    // sub => short for subject
+    // iat => issued at time
+    return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+}
 
 exports.signup = function (req, res, next) {
     // res.send({ success: 'true' });
@@ -6,6 +15,10 @@ exports.signup = function (req, res, next) {
     // console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
+
+    if (!email || !password) {
+        return res.status(422).send({ error: 'Missing email or password.' });
+    }
 
     // Check for duplicate user
     User.findOne({ email: email }, function (err, existingUser) {
@@ -26,6 +39,6 @@ exports.signup = function (req, res, next) {
         });
 
         // response to request showing user created
-        res.json({ success: true, id: user.id });
+        res.json({ token: tokenForUser(user) });
     });
 }
