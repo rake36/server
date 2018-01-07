@@ -6,6 +6,8 @@
 // npm install --save nodemon
 // npm run dev // to use nodemon after adding dev to scripts in package.json
 
+// to run mongo: C:\Program Files\MongoDB\Server\3.6\bin>mongod.exe --dbpath e:\data
+
 
 const express = require('express');
 const http = require('http');
@@ -16,7 +18,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB Setup
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.connect('mongodb://localhost:27017/auth');
 
 // App Setup
 app.use(morgan('combined'));
