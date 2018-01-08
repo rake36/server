@@ -4,6 +4,8 @@
 // npm install --save jwt-simple
 // npm install --save passport passport-jwt
 // npm install --save passport-local
+// npm install --save cors
+
 
 // node index.js to start
 
@@ -20,12 +22,14 @@ const morgan = require('morgan'); // logging
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // DB Setup
 mongoose.connect('mongodb://localhost:27017/auth');
 
 // App Setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));  // parse all requests into json
 router(app);
 
